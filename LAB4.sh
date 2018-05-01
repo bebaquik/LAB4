@@ -34,7 +34,7 @@ cd service
     cd ..
 
 npm init -y
-npm install knex pg express body-parser morgan --save 
+npm install knex mssql express body-parser morgan --save 
 npm install nodemon --save-dev
 knex init
 
