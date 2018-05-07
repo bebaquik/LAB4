@@ -6,7 +6,7 @@ module.exports = {
     
       client: 'postgresql',
       connection: {
-      database: 'lab4_development',
+      database: 'LAB4_DEVELOPMENT',
       user:     'postgres',
       password: '****************'
    },
@@ -22,7 +22,7 @@ module.exports = {
   staging: {
     client: 'postgresql',
     connection: {
-      database: 'lab4_staging',
+      database: 'LAB4_STAGING',
       user:     'postgres',
       password: '*************'
     },
@@ -38,7 +38,7 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      database: 'lab4_production',
+      database: 'LAB4_PRODUCTION',
       user:     'postgres',
       password: '****************'
     },
