@@ -1,64 +1,105 @@
 #!bin/bash
 
 # Criando diretorios do projeto LAB4
-mkdir LAB4 && cd LAB4
+projeto='LAB4'
+mkdir ${projeto} && cd ${projeto}
 
 # Frontend
 mkdir client
 cd client
+    
+    mkdir src
+    cd src
+        mkdir assets components router 
+        touch main.js 
+        touch App.vue
+        cd ..
+    mkdir config
+    cd config
+        touch dev.env.js
+        touch prod.env.js
+        touch test.env.js 
+        touch index.js
+        cd ..
+
+    mkdir static 
+    mkdir test
+
     npm init -y
+    npm install -g firebase-tools
+    npm install vue vue-material material-design-icons-iconfont axios --save
+    npm install browserify browserify-css vueify budo --save-dev
     cd ..
 
 # Backend
 mkdir service 
 cd service
+    
     mkdir src
     cd src 
-        touch main.js 
-        echo // src/main.js > main.js
-        echo const knex = require'("./db.js")'.knex >> main.js
-        echo const express = require '("express")' >> main.js
-        echo const bodyParser = require '("body-parser")' >> main.js
-        echo const morgan = require'("morgan")' >> main.js
-        echo const app = express '()' >> main.js
-
-        touch db.js
-        echo // src/db.js > db.js
-        echo const cfg = require'("../knexfile")' >> db.js
-        echo const knex = require'("knex")(cfg.development)' >> db.js
-        echo exports.knex = knex >> db.js
-        
-        mkdir features
-        cd features
+        mkdir main
+            cd main
+            touch main.js 
+            echo // src/main.js > main.js
+            echo const knex = require'("../db/db.js")'.knex >> main.js
+            echo const express = require '("express")' >> main.js
+            echo const bodyParser = require '("body-parser")' >> main.js
+            echo const morgan = require'("morgan")' >> main.js
+            echo const app = express '()' >> main.js
             cd ..
+
+	    mkdir db
+       	    cd db
+       		touch db.js
+       		echo // src/db.js > db.js
+       		echo const cfg = require'("../../knexfile")' >> db.js
+       		echo const knex = require'("knex")(cfg.development)' >> db.js
+       		echo exports.knex = knex >> db.js
+            cd ..
+
+        mkdir features
+            cd features
+            cd ..
+
+	    mkdir routes
+	        cd routes
+            cd ..
+
+
     cd ..
 
-npm init -y
-npm install knex mssql express body-parser morgan --save 
-npm install nodemon --save-dev
-knex init
+# Iniciando o Projeto e instalando as dependências
+    npm init -y
+    npm install knex pg express body-parser morgan --save 
+    npm install nodemon --save-dev
+    
+# Preparando o Knex
+    knex init 
+    rm -rf knexfile.js && wget https://github.com/bebaquik/LAB4/raw/master/knexfile.js
+    knex migrate:make schema_inicial --env development
+    
+# Criando Readme.md com Informações utilizadas no projeto backend
+    touch README.md 
+    echo '#' STACK BACKEND'\n' > README.md
+    echo '#' Express - http://expressjs.com/ >> README.md
+    echo npm install express --save'\n' >> README.md
+    echo '#' expressjs - http://expressjs.com/ >> README.md
+    echo npm install body-parser --save'\n' >> README.md
+    echo '#' Knex - http://knexjs.org/ >> README.md
+    echo '#' Contrutor de Consultas SQL >> README.md
+    echo npm install knex --save'\n' >> README.md
+    echo '#' PostgreSQL - https://www.npmjs.com/package/pg >> README.md
+    echo '#' Plugin para conexão ao banco de dados Postgres >> README.md
+    echo npm install pg --save'\n' >> README.md
+    echo '#' Morgan - http://expressjs.com/ >> README.md
+    echo '#' Logger utilizado para registrar os acessos ao serviço >> README.md
+    echo npm install morgan --save'\n' >> README.md
+    echo '#' Nodemon - https://nodemon.io/ >> README.md
+    echo '#' recarrega as alterações feitas no projeto sem matar o serviço >> README.md
+    echo npm install nodemon --save-dev'\n' >> README.md
+    cd ..
 
-touch README.md 
-echo '#' STACK BACKEND'\n' > README.md
-echo '#' Express - http://expressjs.com/ >> README.md
-echo npm install express --save'\n' >> README.md
-echo '#' expressjs - http://expressjs.com/ >> README.md
-echo npm install body-parser --save'\n' >> README.md
-echo '#' Knex - http://knexjs.org/ >> README.md
-echo '#' Contrutor de Consultas SQL >> README.md
-echo npm install knex --save'\n' >> README.md
-echo '#' Microsoft SQLServer - https://www.npmjs.com/package/mssql >> README.md
-echo '#' Plugin para conexão ao banco de dados SQL Server >> README.md
-echo npm install mssql --save'\n' >> README.md
-echo '#' Morgan - http://expressjs.com/ >> README.md
-echo '#' Logger utilizado para registrar os acessos ao serviço >> README.md
-echo npm install morgan --save'\n' >> README.md
-echo '#' Nodemon - https://nodemon.io/ >> README.md
-echo '#' recarrega as alterações feitas no projeto sem matar o serviço >> README.md
-echo npm install nodemon --save-dev'\n' >> README.md
-cd ..
-
-# Não subir as dependencias para o projeto git
+# Criando arquivo .gitignore para não enviar dependências para o projeto git
 echo node_modules > .gitignore
 
 # Iniciando um projeto Git
