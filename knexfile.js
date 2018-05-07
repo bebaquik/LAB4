@@ -8,7 +8,7 @@ module.exports = {
       connection: {
       database: 'LAB4_DEVELOPMENT',
       user:     'postgres',
-      password: '****************'
+      password: '1256525897'
    },
     pool: {
       min: 2,
@@ -24,7 +24,7 @@ module.exports = {
     connection: {
       database: 'LAB4_STAGING',
       user:     'postgres',
-      password: '*************'
+      password: '1256525897'
     },
     pool: {
       min: 2,
@@ -40,7 +40,7 @@ module.exports = {
     connection: {
       database: 'LAB4_PRODUCTION',
       user:     'postgres',
-      password: '****************'
+      password: '1256525897'
     },
     pool: {
       min: 2,
