@@ -77,6 +77,17 @@ cd service
     knex init 
     rm -rf knexfile.js && wget https://github.com/bebaquik/LAB4/raw/master/knexfile.js
     knex migrate:make schema_inicial --env development
+
+# Criando index.js
+    touch index.js
+    echo // index.js > index.js
+    echo const main = require'("./src/main/main")' >> index.js
+    echo console.log'("Server Entry Point!")' >> index.js 
+    echo main.start'(3000)' >> index.js
+
+# Criando Script "dev" no package.json
+    sed -i '7s/"test": "echo \"Error: no test specified\" && exit 1"/"dev": "nodemon index.js"/g' package.json
+
     
 # Criando Readme.md com Informações utilizadas no projeto backend
     touch README.md 
