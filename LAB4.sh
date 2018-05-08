@@ -75,7 +75,7 @@ cd service
     
 # Preparando o Knex
     knex init 
-    rm -rf knexfile.js && wget https://github.com/bebaquik/LAB4/raw/master/knexfile.js
+    rm -rf knexfile.js && wget https://github.com/bebaquik/LAB4/raw/master/service/knexfile.js
     knex migrate:make schema_inicial --env development
 
 # Criando index.js
