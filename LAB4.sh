@@ -86,8 +86,7 @@ cd service
     echo main.start'(3000)' >> index.js
 
 # Criando Script "dev" no package.json
-    sed -i '7s/"test": "echo \"Error: no test specified\" && exit 1"/"dev": "nodemon index.js"/g' package.json
-
+    sed -i '7s/"test":.*1"/"dev": "nodemon index.js"/g' package.json
     
 # Criando Readme.md com Informações utilizadas no projeto backend
     touch README.md 
