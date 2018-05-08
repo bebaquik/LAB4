@@ -107,11 +107,12 @@ cd service
     echo '#' Nodemon - https://nodemon.io/ >> README.md
     echo '#' recarrega as alterações feitas no projeto sem matar o serviço >> README.md
     echo npm install nodemon --save-dev'\n' >> README.md
+    cd ..
     
  # Baixando Complementos do Projeto
  wget https://github.com/bebaquik/LAB4/raw/master/LICENSE
  wget https://github.com/bebaquik/LAB4/raw/master/LAB4.sh
- cd ..
+
 
 # Criando arquivo .gitignore para não enviar dependências para o projeto git
 echo node_modules > .gitignore
